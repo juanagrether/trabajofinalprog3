@@ -37,43 +37,40 @@ class Login extends Component {
 export default Login; 
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingHorizontal: 20,
-      backgroundColor: '#f5f5f5',
-    },
-    title: {
-      fontSize: 32,
-      fontWeight: 'bold',
-      margin: 20,
-    },
-    description: {
-      fontSize: 16,
-      textAlign: 'center',
-    },
-    buttonBlue: {
-      backgroundColor: '#67b7f7',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    backgroundColor: '#E6F2FF', // Azul claro, similar al cielo
+  },
+  title: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    color: '#1A73E8', // Azul intenso, amigable y profesional
+    marginBottom: 20,
+  },
+  description: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#5F6368', // Gris azulado para un texto suave
+    marginBottom: 20,
+  },
+  buttonBlue: {
+      backgroundColor: '#0077CC', // Azul vibrante
       padding: 15,
-      margin: 20,
-      borderRadius: 10,
-      width: 600,
-      height:50,
+      borderRadius: 30, // Bordes redondeados para un estilo moderno
+      width: '80%', // Mejor ajuste en pantallas pequeñas
       alignItems: 'center',
-    },
-    buttonOrange: {
-      backgroundColor: '#f7a667',
-      padding: 15,
-      margin: 20,
-      borderRadius: 10,
-      width: 600,
-      height:50,
-      alignItems: 'center',
-    },
-    buttonText: {
-      color: '#fff',
-      fontWeight: 'bold',
-      fontSize: 16,
-    },
-  });
+      shadowColor: '#000', // Sombras para un efecto de elevación
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      elevation: 6,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 18,
+  },
+});
