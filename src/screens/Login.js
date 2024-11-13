@@ -13,13 +13,12 @@ class Login extends Component {
     };
   }
 
-  componentDidMount(){
-    auth.onAuthStateChanged(user => {
-      if (user){
-        this.props.navigation.navigate("HomeMenu"); 
-        console.log('si estoy logueado');
+  componentDidMount () {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.props.navigation.navigate('HomeMenu')
       }
-    });
+    })
   }
 
   onSubmit = () => {
@@ -84,12 +83,7 @@ class Login extends Component {
           <Text style={styles.buttonText}>¿No tienes cuenta? REGISTER!</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.buttonOrange}
-          onPress={() => this.props.navigation.navigate('HomeMenu')}
-        >
-          <Text style={styles.buttonText}>Entrar en la app</Text>
-        </TouchableOpacity>
+        
       </View>
     );
   }
@@ -145,20 +139,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 6,
   },
-  buttonOrange: {
-    backgroundColor: '#f79c42',
-    paddingVertical: 15,
-    marginTop: 10,
-    marginBottom: 30,
-    borderRadius: 50,
-    width: '70%',
-    alignItems: 'center',
-    shadowColor: '#f79c42',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 4,
-  },
+  
   buttonText: {
     color: '#fff',
     fontWeight: '600',
