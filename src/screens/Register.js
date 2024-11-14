@@ -15,10 +15,32 @@ class Register extends Component {
           registered: false,
           errorMsg: ''
         };
+    }
+    
+    handleValidate = () => {
+      const { email, user, password } = this.state;
+  
+      if (email === '' || !email.includes('@')) {
+        return 'Email mal formateado';
+      }
+      if (user === '') {
+        return 'Usuario mal formateado';
+      }
+      if (password === '') {
+        return 'Contraseña mal formateada';
+      }
+      return null;
+    };
+
+    onSubmit(email, password, user, description){
+
+      const errorMsg = this.handleValidate();
+      if (errorMsg) { 
+        this.setState({ errorMsg });
+        return;
       }
 
-      onSubmit = (email, password, user, description) => {
-        auth
+      auth
           .createUserWithEmailAndPassword(email, password)
           .then((response) => {
             console.log("holaaa", email, password)
@@ -32,15 +54,18 @@ class Register extends Component {
                 })
                 .then(() => {
                   this.setState({ registered: true, errorMsg: '' });
-                  this.props.navigation.navigate('HomeMenu')
+                  this.props.navigation.navigate('Login')
                 })
                 .catch(error => this.setState({ errorMsg: error.message }));
             }
           })
-          .catch(error => this.setState({ errorMsg: error.message }));
-      }
+          .catch(error => {
+            console.log(error.message);
+            this.setState({ errorMsg: error.message })})
+          
+  }
 
-	render(){
+  render(){
         return (
             <View style={styles.container}>
             <Text style={styles.title} >Registro</Text>
@@ -76,16 +101,12 @@ class Register extends Component {
               value={this.state.password}
             />
     
-            <TouchableOpacity style={styles.buttonGreen} onPress={() => this.onSubmit(this.state.email, this.state.password, this.state.user, this.state.description)} >
+            <TouchableOpacity style={styles.buttonBlue} onPress={() => this.onSubmit(this.state.email, this.state.password, this.state.user, this.state.description)} >
               <Text style={styles.buttonText}> Register </Text>
             </TouchableOpacity>
-    
-            <View style={styles.preview}>
-              <Text style={styles.description}> Email: {this.state.email}</Text>
-              <Text style={styles.description}> User: {this.state.user}</Text>
-              <Text style={styles.description}> Password: {this.state.password}</Text>
-            </View>
-    
+
+            {/* mensaje de error */}
+            {this.state.errorMsg ? <Text style={styles.error}>{this.state.errorMsg}</Text> : null}
     
             <TouchableOpacity style={styles.buttonBlue} onPress={() => this.props.navigation.navigate('Login')}>
               <Text style={styles.buttonText} >Ya tienes cuenta? LOGIN!</Text>
@@ -98,40 +119,68 @@ class Register extends Component {
 export default Register; 
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingHorizontal: 20,
-      backgroundColor: '#E6F2FF',
-    },
-    title: {
-      fontSize: 34,
-      fontWeight: 'bold',
-      color: '#1A73E8', 
-      marginBottom: 20,
-    },
-    description: {
-      fontSize: 16,
-      textAlign: 'center',
-      color: '#5F6368', 
-      marginBottom: 20,
-    },
-    buttonBlue: {
-        backgroundColor: '#0077CC', 
-        padding: 15,
-        borderRadius: 30, 
-        width: '80%',
-        alignItems: 'center',
-        shadowColor: '#000', 
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-        elevation: 6,
-    },
-    buttonText: {
-      color: '#fff',
-      fontWeight: '600',
-      fontSize: 18,
-    },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 25,
+    backgroundColor: '#F0F4F8',
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: '#3A3A3A',
+    marginBottom: 30,
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+  },
+  description: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#606060',
+    marginBottom: 25,
+    fontFamily: 'Roboto',
+  },
+  field: {
+    width: '90%',
+    marginBottom: 20,
+    padding: 15,
+    borderColor: '#D1D3D8',
+    borderWidth: 1.5,
+    borderRadius: 8,
+    backgroundColor: '#FFFFFF',
+    fontSize: 16,
+    color: '#333',
+  },
+  buttonBlue: {
+    backgroundColor: '#0077CC',
+    paddingVertical: 15,
+    paddingHorizontal: 25,
+    borderRadius: 50,
+    width: '90%',
+    alignItems: 'center',
+    marginTop: 20,
+    shadowColor: '#0077CC',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.25,
+    shadowRadius: 6,
+    elevation: 6,
+  },
+  
+  buttonText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 18,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    fontFamily: 'Roboto',
+  },
+  error: {
+    color: '#FF4D4D',
+    fontSize: 14,
+    marginTop: 15,
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+  },
 });
+
