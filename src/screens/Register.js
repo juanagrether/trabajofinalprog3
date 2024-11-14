@@ -107,10 +107,11 @@ class Register extends Component {
 
             {/* mensaje de error */}
             {this.state.errorMsg ? <Text style={styles.error}>{this.state.errorMsg}</Text> : null}
-    
+            
             <TouchableOpacity style={styles.buttonBlue} onPress={() => this.props.navigation.navigate('Login')}>
-              <Text style={styles.buttonText} >Ya tienes cuenta? LOGIN!</Text>
+              <Text style={styles.buttonText}>Ya tengo cuenta</Text>
             </TouchableOpacity>
+            
           </View>
         )
     }
