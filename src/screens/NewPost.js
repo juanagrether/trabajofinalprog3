@@ -12,28 +12,18 @@ class NewPost extends Component {
     };
   }
 
-  componentDidMount() {
-    // Verifica si el usuario está logueado; si no, redirige a "Login"
-    if (!auth.currentUser) {
-      this.props.navigation.navigate("Login");
-    }
-  }
-
   handleSubmit = () => {
     const { descrip, image } = this.state;
-    if (!auth.currentUser) {
-      this.setState({ error: "Debes iniciar sesión para crear un post." });
-      return;
-    }
+    const imageToSave = image ? image : '../../assets/avion.jpeg';
     db.collection('posts')
       .add({
         email: auth.currentUser.email,
-        image: image || '../../assets/avion.jpeg',
+        image: imageToSave,
         descrip: descrip,
         createdAt: Date.now(),
       })
       .then(() => {
-        this.setState({ error: "" });
+        this.setState({ error: "", descrip: "", image: "" });
         this.props.navigation.navigate("Home");
       })
       .catch((e) => {
@@ -45,19 +35,20 @@ class NewPost extends Component {
   render() {
     return (
       <View style={styles.container}>
+
         <Image
           style={styles.image}
           source={
             this.state.image
               ? { uri: this.state.image }
-              : require('../../assets/avion.jpeg')} // Imagen predeterminada 
+              : require('../../assets/avion.jpeg')}
           resizeMode='contain'
         />
-        <Text style={styles.title}>Nuevo Post</Text>
+        <Text style={styles.title}>Nuevo Post de viaje</Text>
 
         <TextInput
           style={styles.input}
-          placeholder="Escribe tu mensaje aquí"
+          placeholder="Escribe tu descripcion de tu viaje aquí"
           value={this.state.descrip}
           onChangeText={(text) => this.setState({ descrip: text })}
         />
@@ -65,7 +56,7 @@ class NewPost extends Component {
         <TextInput
           style={styles.input}
           keyboardType='default'
-          placeholder='Ingresa la URL de una imagen'
+          placeholder='Ingresa la URL de una imagen de tu destino favorito'
           onChangeText={(text) => this.setState({ image: text })}
           value={this.state.image}
         />
@@ -75,7 +66,7 @@ class NewPost extends Component {
         ) : null}
 
         <TouchableOpacity style={styles.button} onPress={this.handleSubmit}>
-          <Text style={styles.buttonText}>Subir Post</Text>
+          <Text style={styles.buttonText}>Publicar Viaje</Text>
         </TouchableOpacity>
       </View>
     );
@@ -119,10 +110,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   image: {
-    width: 400, // Ancho más grande
-    height: 400, // Alto más grande
+    width: 400,
+    height: 400,
     marginBottom: 10,
-    alignSelf: 'center', // Centrar la imagen
+    alignSelf: 'center', 
   }
-  
+
 });

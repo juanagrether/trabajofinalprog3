@@ -58,7 +58,7 @@ class Users extends Component {
                         <View style={styles.userItem}>
                             <View style={styles.userInfo}>
                                 <Text>Email: {item.data.email}</Text>
-                                <Text>Username: {item.data.us}</Text>
+                                <Text>Username: {item.data.user}</Text>
                                 <Text>Created At: {item.data.createdAt}</Text>
                             </View>
                         </View>

@@ -35,7 +35,7 @@ class Home extends Component {
           data={this.state.posts}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <Post email={item.data.email} descripcion={item.data.descrip} />
+            <Post email={item.data.email} descrip={item.data.descrip} image={item.data.image} />
           )}
         />
       </View>
