@@ -16,6 +16,13 @@ class Register extends Component {
           errorMsg: ''
         };
     }
+    componentDidMount () {
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.props.navigation.navigate('HomeMenu')
+        }
+      })
+    }
     
     handleValidate = () => {
       const { email, user, password } = this.state;
