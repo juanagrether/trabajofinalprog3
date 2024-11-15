@@ -23,7 +23,7 @@ class Home extends Component {
         });
         this.setState({ posts: posts });
       },
-      (error) => console.log(error) // Handles any errors with the onSnapshot
+      (error) => console.log(error) 
     );
   }
 
@@ -35,7 +35,7 @@ class Home extends Component {
           data={this.state.posts}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <Post email={item.data.email} descrip={item.data.descrip} image={item.data.image} />
+            <Post item={item} email={item.data.email} descrip={item.data.descrip} image={item.data.image} />
           )}
         />
       </View>

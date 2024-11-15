@@ -20,6 +20,7 @@ class NewPost extends Component {
         email: auth.currentUser.email,
         image: imageToSave,
         descrip: descrip,
+        likes:[],
         createdAt: Date.now(),
       })
       .then(() => {
