@@ -1,5 +1,5 @@
 import  React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { TextInput } from 'react-native-web';
 import { auth, db } from '../firebase/config'
 
@@ -75,6 +75,10 @@ class Register extends Component {
   render(){
         return (
             <View style={styles.container}>
+               <Image
+        source={require('../../assets/fondo2.jpg')}
+        style={styles.backgroundImage} // Imagen de fondo
+      />
             <Text style={styles.title} >Registro</Text>
     
             <TextInput
@@ -141,6 +145,15 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     textAlign: 'center',
     fontFamily: 'Roboto',
+  },
+  backgroundImage: {
+    position: 'absolute', // Poner la imagen de fondo
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
+    borderRadius: 6,
   },
   description: {
     fontSize: 18,

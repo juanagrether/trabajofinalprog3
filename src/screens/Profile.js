@@ -63,6 +63,10 @@ class Profile extends Component {
 
     return (
       <View style={styles.container}>
+        <Image
+        source={require('../../assets/fondo.jpg')}
+        style={styles.backgroundImage} // Imagen de fondo
+      />
         <View style={styles.formContainer}>
           <Image
             style={styles.image}
@@ -120,6 +124,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
+  backgroundImage: {
+    position: 'absolute', // Poner la imagen de fondo
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
+  },
   image: {
     width: 150, 
     height: 150, 
@@ -136,14 +148,24 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: '#1e90ff',
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: '#ffba08', // Amarillo cálido
+    paddingVertical: 15,
+    paddingHorizontal: 25,
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 5,
+    marginVertical: 20,
+    backgroundColor: '#66C2D1'
+
   },
   buttonText: {
-    color: '#fff',
+    color: '#388E3C',
     fontWeight: 'bold',
+    fontSize: 16,
+    letterSpacing: 1.5,
   },
   postsContainer: {
     marginTop: 20,

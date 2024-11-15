@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Image } from 'react-native';
 import { auth } from '../firebase/config';
 
 class Login extends Component {
@@ -49,6 +49,10 @@ class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
+         <Image
+        source={require('../../assets/fondo2.jpg')}
+        style={styles.backgroundImage} // Imagen de fondo
+      />
         <Text style={styles.title}>Ingresar</Text>
         <Text style={styles.description}>Formulario de LOGIN:</Text>
 
@@ -106,6 +110,15 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     textAlign: 'center',
     fontFamily: 'Roboto',
+  },
+  backgroundImage: {
+    position: 'absolute', // Poner la imagen de fondo
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
+    borderRadius: 6,
   },
   description: {
     fontSize: 18,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList, TextInput } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TextInput, Image } from 'react-native';
 import { db } from '../firebase/config';
 
 class Users extends Component {
@@ -39,6 +39,10 @@ class Users extends Component {
   render() {
     return (
         <View style={styles.container}>
+          <Image
+        source={require('../../assets/fondo.jpg')}
+        style={styles.backgroundImage} // Imagen de fondo
+      />
             <View style={styles.form}>
                 <Text style={styles.title}>Users</Text>
                 <Text style={styles.description}>Search users</Text>
@@ -106,6 +110,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     fontSize: 16,
     color: '#333',
+  },
+  backgroundImage: {
+    position: 'absolute', // Poner la imagen de fondo
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
   },
   buttonBlue: {
     backgroundColor: '#0077CC',
