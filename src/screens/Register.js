@@ -77,7 +77,7 @@ class Register extends Component {
             <View style={styles.container}>
                <Image
         source={require('../../assets/fondo2.jpg')}
-        style={styles.backgroundImage} // Imagen de fondo
+        style={styles.backgroundImage}
       />
             <Text style={styles.title} >Registro</Text>
     
@@ -116,7 +116,6 @@ class Register extends Component {
               <Text style={styles.buttonText}> Register </Text>
             </TouchableOpacity>
 
-            {/* mensaje de error */}
             {this.state.errorMsg ? <Text style={styles.error}>{this.state.errorMsg}</Text> : null}
             
             <TouchableOpacity style={styles.buttonBlue} onPress={() => this.props.navigation.navigate('Login')}>
@@ -148,13 +147,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   backgroundImage: {
-    position: 'absolute', // Poner la imagen de fondo
+    position: 'absolute', 
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
-    borderRadius: 6,
+    zIndex: -1, 
   },
   description: {
     fontSize: 18,

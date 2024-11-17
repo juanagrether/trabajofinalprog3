@@ -41,7 +41,7 @@ class Users extends Component {
         <View style={styles.container}>
           <Image
           source={require('../../assets/fondo.jpg')}
-          style={styles.backgroundImage} // Imagen de fondo
+          style={styles.backgroundImage}
           />
 
             <View style={styles.form}>
@@ -66,7 +66,7 @@ class Users extends Component {
                             </View>
                         </View>
                     )}
-                    style={styles.list} // Estilo para ajustar el tamaño
+                    style={styles.list} 
                 />
             </View>
         </View>
@@ -79,7 +79,7 @@ export default Users;
 
 const styles = StyleSheet.create({
   list: {
-    flex: 1, // Permite que el FlatList ocupe todo el espacio restante
+    flex: 1,
   },
   container: {
     flex: 1,
@@ -115,12 +115,12 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   backgroundImage: {
-    position: 'absolute', // Poner la imagen de fondo
+    position: 'absolute', 
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
+    zIndex: -1, 
   },
   buttonBlue: {
     backgroundColor: '#0077CC',

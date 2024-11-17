@@ -129,12 +129,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   backgroundImage: {
-    position: 'absolute', // Poner la imagen de fondo
+    position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
+    zIndex: -1, 
   },
   image: {
     width: 170, 

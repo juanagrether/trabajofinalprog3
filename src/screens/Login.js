@@ -24,7 +24,6 @@ class Login extends Component {
   onSubmit = () => {
     const { email, password } = this.state;
 
-    // Validación del email y contraseña
     if (!email.includes('@')) {
       this.setState({ error: 'Email mal formateado' });
       return;
@@ -35,7 +34,6 @@ class Login extends Component {
       return;
     }
 
-    // Intento de inicio de sesión en Firebase
     auth.signInWithEmailAndPassword(email, password)
       .then((response) => {
         this.setState({ loggedIn: true, error: '' });
@@ -51,7 +49,7 @@ class Login extends Component {
       <View style={styles.container}>
          <Image
         source={require('../../assets/fondo2.jpg')}
-        style={styles.backgroundImage} // Imagen de fondo
+        style={styles.backgroundImage} 
       />
         <Text style={styles.title}>Ingresar</Text>
         
@@ -76,7 +74,6 @@ class Login extends Component {
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
 
-        {/* mensaje de error */}
         {this.state.error ? <Text style={styles.error}>{this.state.error}</Text> : null}
 
         <TouchableOpacity
@@ -111,12 +108,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   backgroundImage: {
-    position: 'absolute', // Poner la imagen de fondo
+    position: 'absolute', 
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
+    zIndex: -1, 
     borderRadius: 6,
   },
   description: {

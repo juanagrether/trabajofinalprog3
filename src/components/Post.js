@@ -56,7 +56,7 @@ export default class Post extends Component {
                 <Text style={styles.postUser}>Publicado por: {email}</Text>
                 <View style={styles.likeContainer}>
                     <TouchableOpacity style={styles.like} onPress={this.state.like ? this.handleDislike : this.handleLike}>
-                        <Ionicons //agrego icono de corazon 
+                        <Ionicons
                             name={this.state.like ? 'heart' : 'heart-outline'}
                             size={24}
                             color={this.state.like ? 'red' : 'gray'}
