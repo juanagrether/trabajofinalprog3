@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { db } from '../firebase/config';
 import Post from "../components/Post"
 
@@ -30,11 +30,8 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image
-        source={require('../../assets/fondo.jpg')}
-        style={styles.backgroundImage} // Imagen de fondo
-      />
-        <Text style={styles.title}>Viajes ✈️</Text>
+        
+        <Text style={styles.title}>Viajes </Text>
         <FlatList
           data={this.state.posts}
           keyExtractor={(item) => item.id}
@@ -57,17 +54,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 25,
-    backgroundColor: '#F0F4F8',
+    backgroundColor: '#c1c3ae',
   },
   title: {
-    fontSize: 28,
-    fontWeight: '700',
-    marginBottom: 20,
-    textAlign: 'left',
-    color: '#66C2D1',
-    textTransform: 'uppercase',
-    letterSpacing: 2,
-    padding: 10,
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: '#3A3A3A',
+    margin: 20,
+    textAlign: 'center',
+    fontFamily: 'Roboto',
   },
   description: {
     fontSize: 18,
@@ -76,19 +71,11 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     fontFamily: 'Roboto',
   },
-  backgroundImage: {
-    position: 'absolute', // Poner la imagen de fondo
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
-  },
   postContainer: {
     width: '100%',
     padding: 7,
     marginBottom: 20,
-    borderColor: '#D1D3D8',
+    borderColor: '#3A3A3A',
     borderWidth: 1,
     borderRadius: 5,
     backgroundColor: '#FFFFFF',
@@ -109,21 +96,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
   },
-  buttonBlue: {
-    backgroundColor: '#0077CC',
-    paddingVertical: 15,
-    paddingHorizontal: 25,
-    borderRadius: 50,
-    width: '90%',
-    alignItems: 'center',
-    marginTop: 20,
-    shadowColor: '#0077CC',
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.25,
-    shadowRadius: 6,
-    elevation: 6,
-  },
-  
   buttonText: {
     color: '#fff',
     fontWeight: '600',

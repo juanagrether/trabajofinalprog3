@@ -54,8 +54,7 @@ class Login extends Component {
         style={styles.backgroundImage} // Imagen de fondo
       />
         <Text style={styles.title}>Ingresar</Text>
-        <Text style={styles.description}>Formulario de LOGIN:</Text>
-
+        
         <TextInput
           style={styles.field}
           keyboardType='email-address'
@@ -84,7 +83,7 @@ class Login extends Component {
           style={styles.buttonBlue}
           onPress={() => this.props.navigation.navigate('Register')}
         >
-          <Text style={styles.buttonText}>¿No tienes cuenta? REGISTER!</Text>
+          <Text style={styles.buttonText}>¿No tienes cuenta?</Text>
         </TouchableOpacity>
 
         
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 25,
-    backgroundColor: '#F0F4F8',
+    backgroundColor: '#c1c3ae',
   },
   title: {
     fontSize: 36,
@@ -131,7 +130,7 @@ const styles = StyleSheet.create({
     width: '90%',
     marginBottom: 20,
     padding: 15,
-    borderColor: '#D1D3D8',
+    borderColor: '#3A3A3A',
     borderWidth: 1.5,
     borderRadius: 8,
     backgroundColor: '#FFFFFF',
@@ -139,14 +138,14 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   buttonBlue: {
-    backgroundColor: '#0077CC',
+    backgroundColor: '#3A3A3A',
     paddingVertical: 15,
     paddingHorizontal: 25,
     borderRadius: 50,
     width: '90%',
     alignItems: 'center',
     marginTop: 20,
-    shadowColor: '#0077CC',
+    shadowColor: '#3A3A3A',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.25,
     shadowRadius: 6,

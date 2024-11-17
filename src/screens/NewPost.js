@@ -36,20 +36,16 @@ class NewPost extends Component {
   render() {
     return (
       <View style={styles.container}>
-           <Image
-        source={require('../../assets/fondo.jpg')}
-        style={styles.backgroundImage} // Imagen de fondo
-      />
-        <Text style={styles.title}>Crear Post ✈️</Text>
+        <Text style={styles.title}>Crear Post</Text>
 
         <TextInput
-          style={styles.input}
+          style={styles.field}
           keyboardType='default'
-          placeholder='Ingresa la direccion de una imagen de tu destino '
+          placeholder='URL de imagen'
           onChangeText={(text) => this.setState({ image: text })}
           value={this.state.image}
         />
-        <Text style={styles.texto}> Si la direccion de imagen es correcta, deberia verse aqui: </Text>
+        <Text style={styles.text}> Checkea si la imagen es correcta aqui: </Text>
         <Image
           style={styles.image}
           source={
@@ -60,8 +56,8 @@ class NewPost extends Component {
         />
 
         <TextInput
-          style={styles.input}
-          placeholder="Escribe la descripcion de tu viaje aquí"
+          style={styles.field}
+          placeholder="Descripcion del viaje"
           value={this.state.descrip}
           onChangeText={(text) => this.setState({ descrip: text })}
         />
@@ -69,7 +65,7 @@ class NewPost extends Component {
           <Text style={styles.errorText}>{this.state.error}</Text>
         ) : null}
 
-        <TouchableOpacity style={styles.button} onPress={this.handleSubmit}>
+        <TouchableOpacity style={styles.buttonBlue} onPress={this.handleSubmit}>
           <Text style={styles.buttonText}>Publicar Viaje</Text>
         </TouchableOpacity>
       </View>
@@ -81,89 +77,97 @@ export default NewPost;
 
 
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#f0f4f8', // Fondo neutro suave
-    justifyContent: 'center', // Centra verticalmente los elementos
-    alignItems: 'center', // Centra horizontalmente los elementos
-  },
-  backgroundImage: {
-    position: 'absolute', // Poner la imagen de fondo
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
-    borderRadius: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 25,
+    backgroundColor: '#c1c3ae',
   },
   title: {
-    fontSize: 28,
-    fontWeight: '700',
-    marginBottom: 20,
-    textAlign: 'center',
-    color: '#66C2D1',
-    textTransform: 'uppercase',
-    letterSpacing: 2,
-  },
-  input: {
-    width: '100%', // Ocupa el 100% del ancho del contenedor
-    height: 50,
-    borderColor: 'rgba(40, 167, 69, 0.5)', // Gris moderno
-    borderWidth: 1,
-    padding: 15,
-    marginBottom: 15,
-    backgroundColor: '#ffffff', // Fondo blanco para claridad
-    fontSize: 14,
-    color: '#3a3a3a',
-    textAlignVertical: 'top',
-    borderRadius: 6,
-  },
-  texto: {
-    fontSize: 12,
-    textAlign: 'center',
-    color: '#6c757d', // Gris suave para descripciones
-    marginBottom: 10,
-  },
-  errorText: {
-    color: '#e63946', // Rojo vibrante para errores
-    fontSize: 14,
-    textAlign: 'center',
+    fontSize: 36,
     fontWeight: 'bold',
+    color: '#3A3A3A',
+    marginBottom: 30,
+    textAlign: 'center',
+    fontFamily: 'Roboto',
   },
-  button: {
-    backgroundColor: '#66C2D1', // Color de fondo azul suave
+  description: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#606060',
+    marginBottom: 25,
+    fontFamily: 'Roboto',
+  },
+  field: {
+    width: '90%',
+    marginBottom: 20,
+    padding: 15,
+    borderColor: '#3A3A3A',
+    borderWidth: 1.5,
+    borderRadius: 8,
+    backgroundColor: '#FFFFFF',
+    fontSize: 16,
+    color: '#333',
+  },
+  buttonBlue: {
+    backgroundColor: '#3A3A3A',
     paddingVertical: 15,
     paddingHorizontal: 25,
+    borderRadius: 50,
+    width: '90%',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
+    marginTop: 20,
+    shadowColor: '#3A3A3A',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.25,
     shadowRadius: 6,
-    elevation: 5,
-    marginVertical: 20,
-    borderRadius: 4, // Aumenté a 8 para un borde circular leve más notorio
+    elevation: 6,
   },
+  
   buttonText: {
-    color: '#388E3C', // Texto blanco para contraste
-    fontWeight: 'bold',
-    fontSize: 16,
-    letterSpacing: 1.5,
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 18,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    fontFamily: 'Roboto',
+  },
+  error: {
+    color: '#FF4D4D',
+    fontSize: 14,
+    marginTop: 15,
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+  },
+  text:{
+    fontFamily: 'Roboto',
+    color: 'white',
+    textAlign: 'left',
+    alignItems: 'left',
+    justifyContent: 'flex-start',
+    fontSize: 15,
+    marginBottom: 10
+  },
+  postContainer: {
+    width: '100%',
+    padding: 7,
+    marginBottom: 20,
+    borderColor: '#3A3A3A',
+    borderWidth: 1,
+    borderRadius: 5,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
   },
   image: {
-    width: '100%', // Asegura que la imagen ocupe el 100% del ancho del contenedor
-    height: 220,
+    width: '100%', 
+    height: 210,
     marginBottom: 20,
-    borderWidth: 1,
-    borderColor: '#d1d8e0', // Borde gris suave
-    resizeMode: 'cover', // Ajusta la imagen de manera proporcional sin distorsión
     borderRadius: 6,
   },
 });
-
-
-
-

@@ -55,7 +55,7 @@ export default class Post extends Component {
                 <Text style={styles.postText}>{descrip}</Text>
                 <Text style={styles.postUser}>Publicado por: {email}</Text>
                 <View style={styles.likeContainer}>
-                    <TouchableOpacity onPress={this.state.like ? this.handleDislike : this.handleLike}>
+                    <TouchableOpacity style={styles.like} onPress={this.state.like ? this.handleDislike : this.handleLike}>
                         <Ionicons //agrego icono de corazon 
                             name={this.state.like ? 'heart' : 'heart-outline'}
                             size={24}
@@ -81,13 +81,37 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     postText: {
-        fontSize: 16,
+        fontSize: 18,
+        textAlign: 'center',
+        color: '#606060',
+        fontFamily: 'Roboto',
+        marginBottom: 5
     },
     postUser: {
+        textAlign: 'flex-start',
+        color: '#606060',
+        fontFamily: 'Roboto',
         fontSize: 14,
         fontStyle: 'italic',
-        color: '#666',
     },
+    likeContainer: {
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        marginTop: 5,        
+    },
+    like:{
+        width: 25,
+        height: 25,
+        margin: 2,
+    },
+    likeCount:{
+        justifyContent: 'end',
+        width: 25,
+        height: 25,
+        fontSize: 15,
+        fontFamily: 'Roboto',
+    }
+
 });
 
 

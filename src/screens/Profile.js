@@ -63,10 +63,6 @@ class Profile extends Component {
 
     return (
       <View style={styles.container}>
-        <Image
-        source={require('../../assets/fondo.jpg')}
-        style={styles.backgroundImage} // Imagen de fondo
-      />
         <View style={styles.formContainer}>
           <Image
             style={styles.image}
@@ -74,11 +70,11 @@ class Profile extends Component {
             resizeMode='contain'
           />
           <Text style={styles.title}>Perfil</Text>
-          <Text style={styles.detail}>Email: {this.state.email}</Text>
-          <Text style={styles.detail}>User Name: {this.state.userName}</Text>
-          <Text style={styles.detail}>Número de Posts: {userPosts.length}</Text> 
+          <Text style={styles.description}>Email: {this.state.email}</Text>
+          <Text style={styles.description}>User Name: {this.state.userName}</Text>
+          <Text style={styles.description}>Número de Posts: {userPosts.length}</Text> 
         </View>
-        <TouchableOpacity style={styles.button} onPress={this.handleLogout}>
+        <TouchableOpacity style={styles.buttonBlue} onPress={this.handleLogout}>
           <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
 
@@ -117,12 +113,20 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 25,
+    backgroundColor: '#c1c3ae',
   },
   formContainer: {
     alignItems: 'center',
     marginBottom: 20,
+    backgroundColor: 'white',
+    width: 300,
+    height: 350,
+    borderColor: '#3A3A3A',
+    borderWidth: 1,
+    borderRadius: 5,
   },
   backgroundImage: {
     position: 'absolute', // Poner la imagen de fondo
@@ -133,39 +137,46 @@ const styles = StyleSheet.create({
     zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
   },
   image: {
-    width: 150, 
+    width: 170, 
     height: 150, 
     marginBottom: 10,
   },
   title: {
-    fontSize: 24,
+    fontSize: 36,
     fontWeight: 'bold',
-    marginBottom: 20,
+    color: '#c1c3ae',
+    margin: 20,
     textAlign: 'center',
+    fontFamily: 'Roboto',
   },
-  detail: {
-    fontSize: 16,
-    marginBottom: 10,
+  description: {
+    fontSize: 15,
+    fontWeight: 'bolder',
+    textAlign: 'center',
+    color: '#606060',
+    fontFamily: 'Roboto',
   },
-  button: {
-    backgroundColor: '#ffba08', // Amarillo cálido
+  buttonBlue: {
+    backgroundColor: '#3A3A3A',
     paddingVertical: 15,
     paddingHorizontal: 25,
+    borderRadius: 50,
+    width: '90%',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
+    marginTop: 20,
+    shadowColor: '#3A3A3A',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.25,
     shadowRadius: 6,
-    elevation: 5,
-    marginVertical: 20,
-    backgroundColor: '#66C2D1'
-
+    elevation: 6,
   },
   buttonText: {
-    color: '#388E3C',
-    fontWeight: 'bold',
-    fontSize: 16,
-    letterSpacing: 1.5,
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 18,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    fontFamily: 'Roboto',
   },
   postsContainer: {
     marginTop: 20,

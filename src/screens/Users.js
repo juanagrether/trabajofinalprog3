@@ -40,15 +40,14 @@ class Users extends Component {
     return (
         <View style={styles.container}>
           <Image
-        source={require('../../assets/fondo.jpg')}
-        style={styles.backgroundImage} // Imagen de fondo
-      />
+          source={require('../../assets/fondo.jpg')}
+          style={styles.backgroundImage} // Imagen de fondo
+          />
+
             <View style={styles.form}>
                 <Text style={styles.title}>Users</Text>
-                <Text style={styles.description}>Search users</Text>
-
                 <TextInput
-                    style={styles.input}
+                    style={styles.field}
                     keyboardType='email-address'
                     placeholder='Filtrar email'
                     onChangeText={this.userFilter}
@@ -67,6 +66,7 @@ class Users extends Component {
                             </View>
                         </View>
                     )}
+                    style={styles.list} // Estilo para ajustar el tamaño
                 />
             </View>
         </View>
@@ -78,6 +78,9 @@ export default Users;
 
 
 const styles = StyleSheet.create({
+  list: {
+    flex: 1, // Permite que el FlatList ocupe todo el espacio restante
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: 'bold',
     color: '#3A3A3A',
-    marginBottom: 30,
+    margin: 10,
     textAlign: 'center',
     fontFamily: 'Roboto',
   },
@@ -104,7 +107,7 @@ const styles = StyleSheet.create({
     width: '90%',
     marginBottom: 20,
     padding: 15,
-    borderColor: '#D1D3D8',
+    borderColor: '#3A3A3A',
     borderWidth: 1.5,
     borderRadius: 8,
     backgroundColor: '#FFFFFF',
@@ -149,5 +152,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Roboto',
   },
+
+  userItem: {
+    padding: 15,
+    backgroundColor: '#f9f9f9',
+    marginVertical: 8,
+    borderRadius: 8,
+  },
+  userInfo: {
+    marginBottom: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#c1c3ae',
+    borderRadius: 8,
+    backgroundColor: '#c1c3ae',
+},
+  
 });
 
