@@ -109,6 +109,7 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 25,
     backgroundColor: '#c1c3ae',
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   postContainer: {
-    width: '100%',
+    width: 270,
     padding: 7,
     marginBottom: 20,
     borderColor: '#3A3A3A',
@@ -169,24 +170,25 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 3,
   },
-  postText: {
-    fontSize: 16,
-    color: '#3A3A3A',
-    marginBottom: 10,
-    fontFamily: 'Roboto',
-  },
   postImage: {
-    width: '100%',
+    width: '100%', 
     height: 200,
-    borderRadius: 5,
-  },
+    marginBottom: 10,
+    },
+  postText: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#606060',
+    fontFamily: 'Roboto',
+    marginBottom: 5
+    },
   deleteButton: {
     marginTop: 10,
     backgroundColor: '#FF4D4D',
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 5,
-    alignSelf: 'flex-end',
+    alignSelf: 'c',
   },
   deleteText: {
     color: '#FFFFFF',
