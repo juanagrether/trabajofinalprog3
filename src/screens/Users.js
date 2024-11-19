@@ -82,9 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1, // Asegura que ocupe todo el espacio disponible
     paddingHorizontal: 25,
     backgroundColor: '#F0F4F8',
   },
@@ -113,6 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     fontSize: 16,
     color: '#333',
+    fontFamily: 'Roboto',
   },
   backgroundImage: {
     position: 'absolute', 
@@ -120,8 +119,21 @@ const styles = StyleSheet.create({
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: -1, 
+    zIndex: -1, // Esto ya está correcto
+    resizeMode: 'cover', // Ajusta para evitar distorsión
   },
+  form: {
+    flex: 1, // Asegura que ocupe el espacio disponible
+    width: '100%', // Asegura que el contenido no se recorte horizontalmente
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+  },
+  list: {
+    flex: 1,
+    width: '100%', // Asegura que el ancho sea completo
+  },
+
   buttonBlue: {
     backgroundColor: '#0077CC',
     paddingVertical: 15,
@@ -155,7 +167,7 @@ const styles = StyleSheet.create({
 
   userItem: {
     padding: 15,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#3A3A3A',
     marginVertical: 8,
     borderRadius: 8,
   },
@@ -165,7 +177,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#c1c3ae',
     borderRadius: 8,
-    backgroundColor: '#c1c3ae',
+    backgroundColor: '#FFFFFF',
+    fontFamily: 'Roboto',
 },
   
 });

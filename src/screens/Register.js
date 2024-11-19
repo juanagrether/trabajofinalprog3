@@ -171,6 +171,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     fontSize: 16,
     color: '#333',
+    fontFamily: 'Roboto',
   },
   buttonBlue: {
     backgroundColor: '#3A3A3A',

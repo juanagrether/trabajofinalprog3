@@ -36,16 +36,19 @@ class NewPost extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Crear Post</Text>
-
+        <Text style={styles.title}>Crear Post </Text>
+        <Image
+          source={require('../../assets/fondo.jpg')}
+          style={styles.backgroundImage}
+          />
         <TextInput
           style={styles.field}
           keyboardType='default'
-          placeholder='URL de imagen'
+          placeholder='Direccion de la imagen'
           onChangeText={(text) => this.setState({ image: text })}
           value={this.state.image}
         />
-        <Text style={styles.text}> Checkea si la imagen es correcta aqui: </Text>
+        <Text style={styles.text}> La imagen de tu destino deberia aparecer aqui: </Text>
         <Image
           style={styles.image}
           source={
@@ -110,6 +113,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     fontSize: 16,
     color: '#333',
+    fontFamily: 'Roboto',
+  },
+  backgroundImage: {
+    position: 'absolute', // Poner la imagen de fondo
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
   },
   buttonBlue: {
     backgroundColor: '#3A3A3A',

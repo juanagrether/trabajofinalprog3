@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import { db } from '../firebase/config';
 import Post from "../components/Post"
 
@@ -23,21 +23,24 @@ class Home extends Component {
         });
         this.setState({ posts: posts });
       },
-      (error) => console.log(error) 
+      (error) => console.log(error)
     );
   }
 
   render() {
     return (
       <View style={styles.container}>
-        
-        <Text style={styles.title}>Viajes </Text>
+        <Image
+          source={require('../../assets/fondo.jpg')}
+          style={styles.backgroundImage} // Imagen de fondo
+        />
+        <Text style={styles.title}>Viajes ✈️</Text>
         <FlatList
           data={this.state.posts}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <View style={styles.postContainer}>
-            <Post item={item} email={item.data.email} descrip={item.data.descrip} image={item.data.image} />
+              <Post item={item} email={item.data.email} descrip={item.data.descrip} image={item.data.image} />
             </View>
           )}
 
@@ -84,6 +87,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 3,
+  },
+  backgroundImage: {
+    position: 'absolute', // Poner la imagen de fondo
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
   },
   field: {
     width: '90%',
