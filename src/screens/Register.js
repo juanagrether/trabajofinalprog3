@@ -1,133 +1,124 @@
-import  React, { Component } from 'react';
+import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { TextInput } from 'react-native-web';
 import { auth, db } from '../firebase/config'
 
 class Register extends Component {
-    
-    constructor(props) {
-        super(props);
-        this.state = {
-          email: '',
-          user: '',
-          password: '',
-          description: '',
-          registered: false,
-          errorMsg: ''
-        };
-    }
-    componentDidMount () {
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          this.props.navigation.navigate('HomeMenu')
-        }
-      })
-    }
-    
-    handleValidate = () => {
-      const { email, user, password } = this.state;
-  
-      if (email === '' || !email.includes('@')) {
-        return 'Email mal formateado';
-      }
-      if (user === '') {
-        return 'Usuario mal formateado';
-      }
-      if (password === '') {
-        return 'Contraseña mal formateada';
-      }
-      return null;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      user: '',
+      password: '',
+      registered: false,
+      errorMsg: ''
     };
-
-    onSubmit(email, password, user, description){
-
-      const errorMsg = this.handleValidate();
-      if (errorMsg) { 
-        this.setState({ errorMsg });
-        return;
+  }
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.props.navigation.navigate('HomeMenu')
       }
-
-      auth
-          .createUserWithEmailAndPassword(email, password)
-          .then((response) => {
-            console.log("holaaa", email, password)
-            if (response) {
-              db.collection("users")
-                .add({
-                  email: auth.currentUser.email,
-                  description: description,
-                  user: user,
-                  createdAt: Date.now(),
-                })
-                .then(() => {
-                  this.setState({ registered: true, errorMsg: '' });
-                  this.props.navigation.navigate('Login')
-                })
-                .catch(error => this.setState({ errorMsg: error.message }));
-            }
-          })
-          .catch(error => {
-            console.log(error.message);
-            this.setState({ errorMsg: error.message })})
-          
+    })
   }
 
-  render(){
-        return (
-            <View style={styles.container}>
-               <Image
-        source={require('../../assets/fondo2.jpg')}
-        style={styles.backgroundImage}
-      />
-            <Text style={styles.title} >Registro</Text>
-    
-            <TextInput
-              style={styles.field}
-              keyboardType=' email-address'
-              placeholder='email'
-              onChangeText={text => this.setState({ email: text })}
-              value={this.state.email}
-            />
-    
-            <TextInput
-              style={styles.field}
-              keyboardType='default'
-              placeholder='user'
-              onChangeText={text => this.setState({ user: text })}
-              value={this.state.user}
-            />
-    
-            <TextInput style={styles.field}
-              keyboardType='default'
-              placeholder='description'
-              onChangeText={text => this.setState({ description: text })}
-              value={this.state.description}
-            />
-    
-            <TextInput style={styles.field}
-              keyboardType='default'
-              placeholder='password'
-              secureTextEntry={true}
-              onChangeText={text => this.setState({ password: text })}
-              value={this.state.password}
-            />
-    
-            <TouchableOpacity style={styles.buttonBlue} onPress={() => this.onSubmit(this.state.email, this.state.password, this.state.user, this.state.description)} >
-              <Text style={styles.buttonText}> Register </Text>
-            </TouchableOpacity>
+  handleValidate = () => {
+    const { email, user, password } = this.state;
 
-            {this.state.errorMsg ? <Text style={styles.error}>{this.state.errorMsg}</Text> : null}
-            
-            <TouchableOpacity style={styles.buttonBlue} onPress={() => this.props.navigation.navigate('Login')}>
-              <Text style={styles.buttonText}>Ya tengo cuenta</Text>
-            </TouchableOpacity>
-            
-          </View>
-        )
+    if (email === '' || !email.includes('@')) {
+      return 'Email mal formateado';
     }
+    if (user === '') {
+      return 'Usuario mal formateado';
+    }
+    if (password === '') {
+      return 'Contraseña mal formateada';
+    }
+    return null;
+  };
+
+  onSubmit(email, password, user) {
+
+    const errorMsg = this.handleValidate();
+    if (errorMsg) {
+      this.setState({ errorMsg });
+      return;
+    }
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        if (response) {
+          db.collection("users")
+            .add({
+              email: auth.currentUser.email,
+              user: user,
+              createdAt: Date.now(),
+            })
+            .then(() => {
+              this.setState({ registered: true, errorMsg: '' });
+              this.props.navigation.navigate('Login')
+            })
+            .catch(error => this.setState({ errorMsg: error.message }));
+        }
+      })
+      .catch(error => {
+        console.log(error.message);
+        this.setState({ errorMsg: error.message })
+      })
+
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image
+          source={require('../../assets/fondo2.jpg')}
+          style={styles.backgroundImage}
+        />
+        <Text style={styles.title} >Registro</Text>
+
+        <TextInput
+          style={styles.field}
+          keyboardType=' email-address'
+          placeholder='email'
+          onChangeText={text => this.setState({ email: text })}
+          value={this.state.email}
+        />
+
+        <TextInput
+          style={styles.field}
+          keyboardType='default'
+          placeholder='nombre de usuario'
+          onChangeText={text => this.setState({ user: text })}
+          value={this.state.user}
+        />
+
+        <TextInput style={styles.field}
+          keyboardType='default'
+          placeholder='contraseña'
+          secureTextEntry={true}
+          onChangeText={text => this.setState({ password: text })}
+          value={this.state.password}
+        />
+
+        <TouchableOpacity style={styles.buttonBlue} onPress={() => this.onSubmit(this.state.email, this.state.password, this.state.user)} >
+          <Text style={styles.buttonText}> Registrarse </Text>
+        </TouchableOpacity>
+
+        {this.state.errorMsg ? <Text style={styles.error}>{this.state.errorMsg}</Text> : null}
+
+        <TouchableOpacity style={styles.buttonBlue} onPress={() => this.props.navigation.navigate('Login')}>
+          <Text style={styles.buttonText}>Ya tengo cuenta</Text>
+        </TouchableOpacity>
+
+      </View>
+    )
+  }
 }
 
-export default Register; 
+export default Register;
 
 const styles = StyleSheet.create({
   container: {
@@ -147,12 +138,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   backgroundImage: {
-    position: 'absolute', 
+    position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: -1, 
+    zIndex: -1,
   },
   description: {
     fontSize: 18,
@@ -187,7 +178,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 6,
   },
-  
   buttonText: {
     color: '#fff',
     fontWeight: '600',

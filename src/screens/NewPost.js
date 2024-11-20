@@ -40,7 +40,7 @@ class NewPost extends Component {
         <Image
           source={require('../../assets/fondo.jpg')}
           style={styles.backgroundImage}
-          />
+        />
         <TextInput
           style={styles.field}
           keyboardType='default'
@@ -116,12 +116,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   backgroundImage: {
-    position: 'absolute', // Poner la imagen de fondo
+    position: 'absolute', 
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
+    zIndex: -1, 
   },
   buttonBlue: {
     backgroundColor: '#3A3A3A',
@@ -137,7 +137,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 6,
   },
-  
   buttonText: {
     color: '#fff',
     fontWeight: '600',
@@ -153,9 +152,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Roboto',
   },
-  text:{
+  text: {
     fontFamily: 'Roboto',
-    color: 'white',
+    color: '#3A3A3A',
     textAlign: 'left',
     alignItems: 'left',
     justifyContent: 'flex-start',
@@ -177,7 +176,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   image: {
-    width: '100%', 
+    width: '100%',
     height: 210,
     marginBottom: 20,
     borderRadius: 6,

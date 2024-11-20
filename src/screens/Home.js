@@ -32,9 +32,9 @@ class Home extends Component {
       <View style={styles.container}>
         <Image
           source={require('../../assets/fondo.jpg')}
-          style={styles.backgroundImage} // Imagen de fondo
+          style={styles.backgroundImage} 
         />
-        <Text style={styles.title}>Viajes ✈️</Text>
+        <Text style={styles.title}>Viajes ✈</Text>
         <FlatList
           data={this.state.posts}
           keyExtractor={(item) => item.id}
@@ -89,12 +89,12 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   backgroundImage: {
-    position: 'absolute', // Poner la imagen de fondo
+    position: 'absolute', 
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: -1, // Asegura que la imagen esté detrás de los demás componentes
+    zIndex: -1, 
   },
   field: {
     width: '90%',

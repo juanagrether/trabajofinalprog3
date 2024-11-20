@@ -74,18 +74,21 @@ class Profile extends Component {
           />
           <Text style={styles.title}>Perfil de Viajero</Text>
           <Text style={styles.description}>Email: {this.state.email}</Text>
-          <Text style={styles.description}>User Name: {this.state.userName}</Text>
+          <Text style={styles.description}>Usuario: {this.state.userName}</Text>
           <Text style={styles.description}>Número de Posts: {userPosts.length}</Text>
         </View>
         <TouchableOpacity style={styles.buttonBlue} onPress={this.handleLogout}>
           <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
+        {userPosts.length === 0 ? (
+          <Text style={styles.noPostsText}>No hay posts</Text>
+        ) : (
         <FlatList
           data={userPosts}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <View style={styles.postContainer}>
-               <Image
+              <Image
                 source={{ uri: item.data.image }}
                 style={styles.postImage}
               />
@@ -97,12 +100,12 @@ class Profile extends Component {
                 <Text style={styles.deleteText}>Eliminar</Text>
               </TouchableOpacity>
             </View>
-          )}
-        />
-      </View>
-    );
-  }
-}
+         )}
+         />
+       )}
+     </View>
+   );
+ }};
 
 export default Profile;
 
@@ -171,17 +174,17 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   postImage: {
-    width: '100%', 
+    width: '100%',
     height: 200,
     marginBottom: 10,
-    },
+  },
   postText: {
     fontSize: 18,
     textAlign: 'center',
     color: '#606060',
     fontFamily: 'Roboto',
     marginBottom: 5
-    },
+  },
   deleteButton: {
     marginTop: 10,
     backgroundColor: '#FF4D4D',
@@ -203,6 +206,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     zIndex: -1,
+  },
+  noPostsText: {
+    fontSize: 18,
+    color: 'gray',
+    textAlign: 'center',
+    marginTop: 20,
   },
 });
 

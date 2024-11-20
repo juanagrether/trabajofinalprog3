@@ -64,7 +64,7 @@ class Login extends Component {
         <TextInput
           style={styles.field}
           keyboardType='default'
-          placeholder='password'
+          placeholder='contraseña'
           secureTextEntry={true}
           onChangeText={text => this.setState({ password: text })}
           value={this.state.password}
@@ -149,7 +149,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 6,
   },
-  
   buttonText: {
     color: '#fff',
     fontWeight: '600',

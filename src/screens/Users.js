@@ -6,70 +6,69 @@ class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        users: [],
-        filterU: [],
-        filterValue: '',
+      users: [],
+      filterU: [],
+      filterValue: '',
     };
   }
   componentDidMount() {
     db.collection('users').onSnapshot(
-        docs => {
-            let usuarios = [];
-            docs.forEach(doc => {
-                usuarios.push({
-                    id: doc.id,
-                    data: doc.data()
-                });
-            });
-            this.setState({
-                users: usuarios,
-                filterU: usuarios
-            });
-        }
+      docs => {
+        let usuarios = [];
+        docs.forEach(doc => {
+          usuarios.push({
+            id: doc.id,
+            data: doc.data()
+          });
+        });
+        this.setState({
+          users: usuarios,
+          filterU: usuarios
+        });
+      }
     );
   }
 
   userFilter = (text) => {
     this.setState({
-        filterValue: text,
-        filterU: this.state.users.filter(user => user.data.email.toLowerCase().includes(text.toLowerCase())),
+      filterValue: text,
+      filterU: this.state.users.filter(user => user.data.email.toLowerCase().includes(text.toLowerCase())),
     });
   };
 
   render() {
     return (
-        <View style={styles.container}>
-          <Image
+      <View style={styles.container}>
+        <Image
           source={require('../../assets/fondo.jpg')}
           style={styles.backgroundImage}
+        />
+
+        <View style={styles.form}>
+          <Text style={styles.title}>Users</Text>
+          <TextInput
+            style={styles.field}
+            keyboardType='email-address'
+            placeholder='Filtrar email'
+            onChangeText={this.userFilter}
+            value={this.state.filterValue}
           />
 
-            <View style={styles.form}>
-                <Text style={styles.title}>Users</Text>
-                <TextInput
-                    style={styles.field}
-                    keyboardType='email-address'
-                    placeholder='Filtrar email'
-                    onChangeText={this.userFilter}
-                    value={this.state.filterValue}
-                />
-
-                <FlatList
-                    data={this.state.filterU}
-                    keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => (
-                        <View style={styles.userItem}>
-                            <View style={styles.userInfo}>
-                                <Text>Email: {item.data.email}</Text>
-                                <Text>Username: {item.data.user}</Text>
-                                <Text>Created At: {item.data.createdAt}</Text>
-                            </View>
-                        </View>
-                    )}
-                    style={styles.list} 
-                />
-            </View>
+          <FlatList
+            data={this.state.filterU}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <View style={styles.userItem}>
+                <View style={styles.userInfo}>
+                  <Text>Email: {item.data.email}</Text>
+                  <Text>Usuario: {item.data.user}</Text>
+                </View>
+              </View>
+            )}
+            style={styles.list}
+          />
         </View>
+      </View>
     );
   }
 }
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    flex: 1, // Asegura que ocupe todo el espacio disponible
+    flex: 1,
     paddingHorizontal: 25,
     backgroundColor: '#F0F4F8',
   },
@@ -114,26 +113,25 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   backgroundImage: {
-    position: 'absolute', 
+    position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
     height: '100%',
-    zIndex: -1, // Esto ya está correcto
-    resizeMode: 'cover', // Ajusta para evitar distorsión
+    zIndex: -1,
+    resizeMode: 'cover',
   },
   form: {
-    flex: 1, // Asegura que ocupe el espacio disponible
-    width: '100%', // Asegura que el contenido no se recorte horizontalmente
+    flex: 1,
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 10,
   },
   list: {
     flex: 1,
-    width: '100%', // Asegura que el ancho sea completo
+    width: '100%',
   },
-
   buttonBlue: {
     backgroundColor: '#0077CC',
     paddingVertical: 15,
@@ -148,7 +146,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 6,
   },
-  
   buttonText: {
     color: '#fff',
     fontWeight: '600',
@@ -164,7 +161,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Roboto',
   },
-
   userItem: {
     padding: 15,
     backgroundColor: '#3A3A3A',
@@ -179,7 +175,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#FFFFFF',
     fontFamily: 'Roboto',
-},
-  
+  },
+
 });
 

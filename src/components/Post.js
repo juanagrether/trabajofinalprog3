@@ -4,7 +4,7 @@ import { db, auth } from '../firebase/config';
 import firebase from 'firebase';
 import { Ionicons } from '@expo/vector-icons';
 
-export default class Post extends Component {
+class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -68,6 +68,9 @@ export default class Post extends Component {
         );
     }
 }
+
+export default Post;
+
 const styles = StyleSheet.create({
     postContainer: {
         padding: 10,
@@ -95,16 +98,16 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
     },
     likeContainer: {
-        flexDirection: 'row', 
-        alignItems: 'center', 
-        marginTop: 5,        
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 5,
     },
-    like:{
+    like: {
         width: 25,
         height: 25,
         margin: 2,
     },
-    likeCount:{
+    likeCount: {
         justifyContent: 'end',
         width: 25,
         height: 25,
