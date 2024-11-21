@@ -54,19 +54,23 @@ class Users extends Component {
             value={this.state.filterValue}
           />
 
-          <FlatList
-            data={this.state.filterU}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <View style={styles.userItem}>
-                <View style={styles.userInfo}>
-                  <Text>Email: {item.data.email}</Text>
-                  <Text>Usuario: {item.data.user}</Text>
+        {this.state.filterU.length === 0 ? (
+            <Text style={styles.noResults}>No hay resultados</Text>
+          ) : (
+            <FlatList
+              data={this.state.filterU}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <View style={styles.userItem}>
+                  <View style={styles.userInfo}>
+                    <Text>Email: {item.data.email}</Text>
+                    <Text>Usuario: {item.data.user}</Text>
+                  </View>
                 </View>
-              </View>
-            )}
-            style={styles.list}
-          />
+              )}
+              style={styles.list}
+            />
+          )}
         </View>
       </View>
     );
@@ -176,6 +180,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     fontFamily: 'Roboto',
   },
+  noResults: {
+    color: 'red'
+  }
 
 });
 

@@ -12,7 +12,9 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    db.collection('posts').onSnapshot(
+    db.collection('posts')
+    .orderBy("createdAt", "desc")
+    .onSnapshot(
       (snapshot) => {
         let posts = [];
         snapshot.forEach((doc) => {
@@ -21,6 +23,7 @@ class Home extends Component {
             data: doc.data(),
           });
         });
+
         this.setState({ posts: posts });
       },
       (error) => console.log(error)
