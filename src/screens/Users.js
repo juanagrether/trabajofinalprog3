@@ -49,13 +49,13 @@ class Users extends Component {
           <TextInput
             style={styles.field}
             keyboardType='email-address'
-            placeholder='Filtrar email'
+            placeholder='Filtrar email o usuario de viajero'
             onChangeText={this.userFilter}
             value={this.state.filterValue}
           />
 
         {this.state.filterU.length === 0 ? (
-            <Text style={styles.noResults}>No hay resultados</Text>
+            <Text style={styles.noResults}>El email o usuario no existe</Text>
           ) : (
             <FlatList
               data={this.state.filterU}
@@ -78,7 +78,6 @@ class Users extends Component {
 }
 
 export default Users;
-
 
 const styles = StyleSheet.create({
   list: {
@@ -181,7 +180,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   noResults: {
-    color: 'red'
+    fontSize: 18,
+    color: 'gray',
+    textAlign: 'center',
+    marginTop: 20,
   }
 
 });

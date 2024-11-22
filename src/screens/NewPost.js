@@ -78,8 +78,6 @@ class NewPost extends Component {
 
 export default NewPost;
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

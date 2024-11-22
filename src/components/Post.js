@@ -60,11 +60,10 @@ class Post extends Component {
                             name={this.state.like ? 'heart' : 'heart-outline'}
                             size={24}
                             color={this.state.like ? 'red' : 'gray'}
-                            
                         />
+                        <Text style={styles.likeCount}>{this.state.cantidad}</Text>
+                        <Text style={styles.likeText}>Me gusta</Text>
                     </TouchableOpacity>
-                    <Text style={styles.likeCount}>{this.state.cantidad}</Text>
-                    <Text style={styles.likeText}>Me gusta</Text>
                 </View>
             </View>
         );
@@ -102,13 +101,12 @@ const styles = StyleSheet.create({
     likeContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 5,
-        justifyContent: 'center'
+        justifyContent: 'flex-start',
     },
     like: {
-        width: 25,
-        height: 25,
-        margin: 5,
+        flexDirection: 'row', 
+        alignItems: 'center',
+        marginRight: 10, 
     },
     likeCount: {
         margin: 5,
@@ -116,8 +114,10 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
     },
     likeText:{
-        margin: 5,
+        marginLeft: 0,
         fontFamily: 'Roboto',
+        fontSize: 16,
+        color: '#606060',
     }
 
 });

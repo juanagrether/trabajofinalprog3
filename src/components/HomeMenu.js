@@ -8,6 +8,7 @@ import Feather from '@expo/vector-icons/Feather';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { auth } from '../firebase/config';
+
 const Tab = createBottomTabNavigator();
 
 class HomeMenu extends Component {
